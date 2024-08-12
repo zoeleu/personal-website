@@ -1,0 +1,89 @@
+$dark-color: #101010;
+$light-color: #ececec;
+$link-light-color: hsl(240, 100%, 77%);
+$link-dark-color: hsl(240, 100%, 28%);
+
+
+* {
+  margin: 0;
+  padding: 0;
+
+  font-family: "Space Mono", monospace;
+  font-size: 24px;
+}
+
+body {
+  @media (prefers-color-scheme: dark) {
+    background-color: $dark-color;
+    color: $light-color;
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: $light-color;
+    color: $dark-color;
+  }
+
+  nav {
+    display: flex;
+
+    margin: 2rem;
+
+    .spacer {
+      flex-grow: 1;
+    }
+
+    ul {
+      li {
+        text-align: right;
+        list-style: none;
+      }
+    }
+  }
+
+  .cat {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+
+    opacity: 0.5;
+  }
+}
+
+a {
+  @media (prefers-color-scheme: light) {
+    color: $link-dark-color;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: $link-light-color;
+  }
+}
+
+.tooltip:hover {
+  position: relative;
+
+
+  &::after {
+    content: attr(data-tooltip);
+    padding: 4px 8px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100%;
+    white-space: nowrap;
+    z-index: 20;
+    border-radius: 5px;
+
+    @media (prefers-color-scheme: light) {
+      color: $dark-color;
+      border: solid 1px $dark-color;
+      background-color: $light-color;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: $light-color;
+      border: solid 1px $light-color;
+      background-color: $dark-color;
+    }
+  }
+}
